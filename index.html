@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>PikoBuy spreadsheet – svensk guide till produktlänkar och QC</title>
+  <meta name="description" content="PikoBuy spreadsheet på svenska. Hitta skokategorier, kläder och accessoarer, jämför storlekar och QC-bilder och räkna på frakten till Sverige.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:title" content="PikoBuy spreadsheet – svensk guide till produktlänkar och QC">
+  <meta property="og:description" content="Jämför produktlänkar, storlekar och lagerbilder innan du väljer frakt till Sverige.">
+  <meta property="og:image" content="https://www.tike.gr/files/images/products/media/CW2/CW2288-111/images/CW2288-111.jpg.webp">
+  <meta property="og:image:alt" content="Vit Nike Air Force 1 ’07 från sidan">
+  <meta name="theme-color" content="#14352e">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f5ed;
+      --ink: #172b24;
+      --dark: #14352e;
+      --muted: #4e5d53;
+      --line: #bdc7b7;
+      --lime: #e4f099;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.6 system-ui, sans-serif; }
+    .wrap { width: min(72rem, 100% - 2rem); margin-inline: auto; }
+    a { color: inherit; text-underline-offset: .18em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #a74b29; outline-offset: 4px; }
+    .top { background: var(--dark); color: #fff; }
+    .top .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .4rem 1rem; padding-block: .8rem; }
+    .brand { font-weight: 800; text-decoration: none; }
+    .tag { font: .78rem/1.4 ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: 3fr 2fr; gap: clamp(1rem, 4vw, 3.5rem); align-items: center; padding-block: clamp(2rem, 5vw, 4rem) 1.5rem; }
+    .hero h1 { margin: .4rem 0 .65rem; font-size: clamp(2.15rem, 6.4vw, 5.25rem); line-height: .98; letter-spacing: -.065em; overflow-wrap: anywhere; }
+    h2 { margin: 0 0 .65rem; font-size: clamp(1.45rem, 3vw, 2.15rem); line-height: 1.15; letter-spacing: -.035em; }
+    h3 { margin: 0 0 .35rem; font-size: 1.13rem; line-height: 1.3; }
+    p { margin: 0 0 .85rem; }
+    .lead { max-width: 53ch; font-size: 1.08rem; }
+    .button { display: inline-block; background: var(--lime); border: 1px solid var(--ink); color: var(--ink); padding: .62rem .9rem; font-weight: 750; text-decoration: none; }
+    .button:hover { background: #fff; }
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: #fff; }
+    .hero figure { border: 1px solid var(--line); }
+    .hero img { aspect-ratio: 4/3; }
+    figcaption { padding: .45rem .65rem; color: var(--muted); font-size: .85rem; }
+    .band { background: var(--dark); color: #fff; padding-block: 1.4rem; }
+    .cats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem; margin: .9rem 0 0; padding: 0; list-style: none; }
+    .cats a { display: flex; justify-content: space-between; align-items: center; gap: .3rem; height: 100%; min-height: 2.75rem; padding: .46rem .58rem; border: 1px solid #7d9a88; text-decoration: none; font-size: .9rem; font-weight: 650; overflow-wrap: anywhere; }
+    .cats a:hover { background: var(--lime); color: var(--ink); }
+    .band a:focus-visible { outline-color: var(--lime); }
+    .section { padding-block: 2rem; border-bottom: 1px solid var(--line); }
+    .notes, .gallery { display: grid; gap: .85rem; }
+    .notes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .note { padding: 1rem; background: #fffdf6; border-top: 3px solid var(--dark); }
+    .note .tag { display: block; color: var(--muted); margin-bottom: .45rem; }
+    .note p { margin: 0; max-width: 61ch; }
+    .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .gallery figure { border: 1px solid var(--line); }
+    .table-wrap { max-width: 52rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    th, td { text-align: left; vertical-align: top; padding: .58rem .45rem; border-bottom: 1px solid var(--line); }
+    thead { background: #eaf0e2; }
+    tbody th { width: 27%; }
+    .fine { color: var(--muted); font-size: .9rem; }
+    .faq { max-width: 52rem; }
+    details { border-top: 1px solid var(--line); }
+    summary { padding: .7rem .2rem; min-height: 2.75rem; cursor: pointer; font-weight: 700; }
+    details p { margin: 0 0 .85rem; padding-inline: .2rem; }
+    footer { padding-block: 1.4rem; }
+    @media (max-width: 54rem) { .cats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 38rem) {
+      .hero, .notes { grid-template-columns: 1fr; }
+      .hero img { aspect-ratio: 2/1; }
+      .cats, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "PikoBuy spreadsheet – svensk guide till produktlänkar och QC",
+    "description": "PikoBuy spreadsheet på svenska. Hitta skokategorier, kläder och accessoarer, jämför storlekar och QC-bilder och räkna på frakten till Sverige.",
+    "inLanguage": "sv",
+    "about": {
+      "@type": "Thing",
+      "name": "PikoBuy spreadsheet",
+      "description": "Ett PikoBuy spreadsheet är en kategoriserad lista med produktlänkar och uppgifter som hjälper dig att jämföra varor före ett köp."
+    }
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/zcoeh/">
+</head>
+<body>
+  <!-- index.html
+  Redaktionellt sökunderlag: Googles förstasida gick inte att verifiera.
+  Tio webbplatser från den tillgängliga webbsökningen granskades utan rangordning:
+  pikobuy.to (kategorier, modeller); pikobuybestsheet.com (produktlistor, lagerbilder);
+  pikobuyspreadsheet.shop (skostorlek, bildvinklar); pikospreadsheets.com (produktlänkar, vikt);
+  sheetpikobuy.com (QC och detaljbilder); pikospreadsheets.net (marknadsplatser, lagerkontroll);
+  pikobuyshop.com (sökord, fraktvikt); pikobuyspreadsheet.cc (länkgranskning, frakt);
+  chinagrails.com (säljarkällor, lageruppgifter); rep.tools (köpflöde, frakt).
+  -->
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="https://www.hipobuyfind.com">www.hipobuyfind.com</a>
+      <span class="tag">Svensk inköpsguide</span>
+    </div>
+  </header>
+  <main>
+    <section class="wrap hero" aria-labelledby="sidrubrik">
+      <div>
+        <span class="tag">Produktlänkar · Passform · Frakt</span>
+        <h1 id="sidrubrik">PikoBuy spreadsheet</h1>
+        <p class="lead">Ett PikoBuy spreadsheet är en kategoriserad lista med produktlänkar och uppgifter som hjälper dig att jämföra varor före ett köp. Börja med en kategori och kontrollera variant, mått och lagerbilder innan du väljer frakt.</p>
+        <a class="button" href="https://www.hipobuyfind.com">Öppna HipobuyFind ↗</a>
+      </div>
+      <figure>
+        <img src="https://www.tike.gr/files/images/products/media/CW2/CW2288-111/images/CW2288-111.jpg.webp" width="640" height="480" loading="eager" fetchpriority="high" decoding="async" alt="Vit Nike Air Force 1 ’07 från sidan">
+        <figcaption>Nike Air Force 1 ’07 · stilreferens</figcaption>
+      </figure>
+    </section>
+
+    <nav class="band" aria-labelledby="kategorier">
+      <div class="wrap">
+        <h2 id="kategorier">Välj en kategori</h2>
+        <ul class="cats">
+          <li><a href="https://hipobuyfind.com/category-911-Shoes.html">Skor <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html">Huvtröjor och tröjor <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-shirts <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-914-Jackets.html">Jackor <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html">Byxor och shorts <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-916-Headwear.html">Kepsar och mössor <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-917-Sets.html">Klädset <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html">Underkläder <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-919-Jersey.html">Matchtröjor <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://hipobuyfind.com/category-920-Accessories.html">Accessoarer <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="wrap section" aria-labelledby="guider">
+      <h2 id="guider">Fyra kontroller före köp</h2>
+      <div class="notes">
+        <article class="note">
+          <span class="tag">01 · PikoBuy produktlänkar</span>
+          <h3>Matcha länken med säljarens variant</h3>
+          <p>Öppna originalannonsen och jämför artikelnummer, färgkod och vald storlek. På Weidian, Taobao och 1688 kan en produktlänk leda till flera varianter. Spara länken och variantnamnet så att du kan jämföra dem med orderbekräftelsen.</p>
+        </article>
+        <article class="note">
+          <span class="tag">02 · PikoBuy storleksguide</span>
+          <h3>Mät ett plagg eller en sko du redan använder</h3>
+          <p>Lägg en tröja plant och mät bröstvidden från armhåla till armhåla. Kontrollera om säljarens storlekstabell visar platt bredd eller omkrets. För sneakers kan innersulans längd i centimeter ge en bättre jämförelse än EU-storleken ensam.</p>
+        </article>
+        <article class="note">
+          <span class="tag">03 · PikoBuy QC-bilder</span>
+          <h3>Be om bilden som besvarar din fråga</h3>
+          <p>QC står för kvalitetskontroll. Använd lagerbilder för att granska sömmar, tryck, sulor eller spännen på varan. Vid tveksamma mått, be om ett foto där måttbandets början och slut syns. Fråga om villkoren för byte eller retur innan paketet skickas.</p>
+        </article>
+        <article class="note">
+          <span class="tag">04 · PikoBuy frakt till Sverige</span>
+          <h3>Jämför kostnaden för det färdiga paketet</h3>
+          <p>Räkna ihop varans pris, lokal frakt, eventuella serviceavgifter och internationell frakt. Be om paketets vikt och mått och jämför hur alternativen räknar volymvikt. Räkna om till SEK och kontrollera om moms, tull eller hanteringsavgift kan tillkomma.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="stil">
+      <h2 id="stil">Fyra stilreferenser</h2>
+      <p class="fine">Bilderna visar exempel på modeller och detaljer. Utbud och äkthet behöver kontrolleras för varje annons.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-monogram-surplus-cap%20--M5338M_PM2_Front%20view.jpg" width="400" height="400" loading="lazy" decoding="async" alt="Grön Louis Vuitton Monogram Surplus-keps med lädermärke framtill">
+          <figcaption>Louis Vuitton · keps</figcaption>
+        </figure>
+        <figure>
+          <img src="https://bizweb.dktcdn.net/thumb/1024x1024/100/413/335/products/duyet-gucci-oversize-t-shirt-big-logo-off-white-1.jpg?v=1615021983153" width="400" height="400" loading="lazy" decoding="async" alt="Benvit Gucci-t-shirt med svart logotyp framtill">
+          <figcaption>Gucci · t-shirt</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.hermes.com/is/image/hermesproduct/bracelet-clic-h--700001F%204P-front-1-300-0-1000-1000_b.jpg" width="400" height="400" loading="lazy" decoding="async" alt="Hermès Clic H-armband i emalj med guldfärgat H-spänne">
+          <figcaption>Hermès · armband</figcaption>
+        </figure>
+        <figure>
+          <img src="https://d2cva83hdk3bwc.cloudfront.net/dior-b27-low-top-sneaker-beige-and-black-oblique-jacquard-gray-white-2.jpg" width="400" height="400" loading="lazy" decoding="async" alt="Gråvit Dior B27-sneaker med mönstrad sidopanel">
+          <figcaption>Dior · låg sneaker</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="matt">
+      <h2 id="matt">Vad ska du kontrollera i varje kategori?</h2>
+      <p>Jämför samma mått på varan och på något du redan har. Be om en närbild när annonsen lämnar en detalj oklar.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Kategori</th><th scope="col">Mått och detaljer att kontrollera</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Skor</th><td>Innersulans längd, bredd över framfoten och yttersulans mönster.</td></tr>
+            <tr><th scope="row">Huvtröjor och tröjor</th><td>Bröstvidd, ärmlängd från axelsömmen och längd från nacke till fåll.</td></tr>
+            <tr><th scope="row">T-shirts</th><td>Axelbredd, halsringning och tryckets placering.</td></tr>
+            <tr><th scope="row">Jackor</th><td>Ärmlängd från nacken vid raglanärm, dragkedjans funktion och fodrets tjocklek.</td></tr>
+            <tr><th scope="row">Byxor och shorts</th><td>Midjevidd i plant läge, innerbenslängd och benöppningens bredd.</td></tr>
+            <tr><th scope="row">Kepsar och mössor</th><td>Huvudomkrets i centimeter, skärmens form och justeringens spann.</td></tr>
+            <tr><th scope="row">Klädset</th><td>Separata storlekar för överdel och underdel samt färgmatchning mellan delarna.</td></tr>
+            <tr><th scope="row">Underkläder</th><td>Resårens bredd, materialblandning och hygienvillkor vid retur.</td></tr>
+            <tr><th scope="row">Matchtröjor</th><td>Spelar- eller supporterpassform samt namntryck och nummer på ryggen.</td></tr>
+            <tr><th scope="row">Accessoarer</th><td>Armbandets invändiga omkrets, spännets funktion och materialangivelse.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wrap section" itemscope itemtype="https://schema.org/FAQPage" aria-labelledby="fragor">
+      <meta itemprop="inLanguage" content="sv">
+      <h2 id="fragor">Vanliga frågor</h2>
+      <div class="faq">
+        <details open itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+          <summary itemprop="name">Vad är ett PikoBuy spreadsheet?</summary>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text">Det är en lista som grupperar produktlänkar efter exempelvis kategori eller modell. Använd den för att hitta alternativ och kontrollera sedan pris, storlek och lagerstatus i säljarens annons.</p>
+          </div>
+        </details>
+        <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+          <summary itemprop="name">Vad gör jag om en produktlänk har slutat fungera?</summary>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text">Sök på modellnamnet eller artikelnumret och jämför bilder, variant och säljaruppgifter med den ursprungliga annonsen. Kontrollera lagerstatus på den nya sidan innan du går vidare.</p>
+          </div>
+        </details>
+        <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+          <summary itemprop="name">Kan QC-bilder visa att en märkesvara är äkta?</summary>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text">En bild räcker sällan för att avgöra äkthet. För en märkesvara bör du kontrollera säljaren, begära inköpsunderlag och vid behov anlita en oberoende granskare.</p>
+          </div>
+        </details>
+        <details itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+          <summary itemprop="name">Vad behöver jag för att jämföra frakt till Sverige?</summary>
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text">Du behöver paketets vikt och yttermått samt pris och villkor för varje fraktalternativ. Kontrollera vad som ingår i offerten och vilka avgifter som kan tillkomma vid leverans.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <p class="fine">Fristående guide. Kategorierna öppnas hos HipobuyFind.</p>
+    <a class="brand" href="https://www.hipobuyfind.com">www.hipobuyfind.com ↗</a>
+  </footer>
+</body>
+</html>
